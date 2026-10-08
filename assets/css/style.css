@@ -1,0 +1,177 @@
+/* Fonts */
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-Bold.ttf");
+}
+@font-face {
+    font-family: "Inter Light";
+    src: url("../fonts/Inter-Light.ttf");
+}
+@font-face {
+    font-family: "Inter Medium";
+    src: url("../fonts/Inter-Medium.ttf");
+}
+@font-face {
+    font-family: "Inter Regular";
+    src: url("../fonts/Inter-Regular.ttf");
+}
+/* End: Fonts */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter Regular', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.section-logo {
+    margin: 100px 0 25px 0;
+    text-align: center;
+}
+
+.section-logo img {
+    width: 160px;
+}
+
+.section-text {
+    text-align: center;
+    margin: 10px 25px;
+}
+
+.text-title {
+    font-family: 'Inter Bold';
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.text-body {
+    font-size: 12px;
+    margin: 15px 0;
+}
+
+.section-button {
+    padding: 10px 35px;
+    margin: 30px 0;
+}
+
+.section-footer {
+    position: relative;
+}
+
+.section-phone {
+    position: absolute;
+    z-index: 2;
+    right: 10%;
+    top: 5%;
+    width: 360px;
+} 
+
+.footer-background {
+    position: relative;
+    z-index: -1;
+    top: 65px;
+}
+
+/* mobile potrait */
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 10%;
+        top: 10%;
+        width: 300px;
+    }
+  
+    .footer-background {
+        position: relative;
+        z-index: -1;
+        top: 65px;
+    }
+    
+}
+
+/* Ipad / Tablet portrait */
+@media (min-width: 768px) and (max-width: 1020px) {
+  
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 10%;
+        top: 10%;
+        width: 210px;
+    }
+    
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 10%;
+        top: 10%;
+        width: 280px;
+    }
+    
+}
+
+@media (min-width: 1281px) and (max-width: 1439) {
+  
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 15%;
+        top: 5%;
+        width: 300px;
+    }
+
+    .footer-background {
+        position: relative;
+        z-index: -1;
+        top: 92px;
+    }
+    
+}
+
+@media (min-width: 1440px) and (max-width: 1800px) {
+  
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 10%;
+        top: 5%;
+        width: 400px;
+    }
+
+    .footer-background {
+        position: relative;
+        z-index: -1;
+        top: 92px;
+    }
+    
+}
+
+@media (min-width: 2560px) {
+  
+    .section-phone {
+        position: absolute;
+        z-index: 2;
+        right: 20%;
+        top: 15%;
+        width: 525px;
+    }
+
+    .footer-background {
+        position: relative;
+        z-index: -1;
+        top: 92px;
+    }
+    
+}
