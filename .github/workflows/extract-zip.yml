@@ -7,14 +7,10 @@ on:
         description: "Path file zip di repo"
         required: true
         default: "archive.zip"
-      target_dir:
-        description: "Folder tujuan extract"
-        required: true
-        default: "extracted"
       delete_zip:
         description: "Hapus zip setelah extract?"
         type: boolean
-        default: false
+        default: true
 
 jobs:
   extract:
