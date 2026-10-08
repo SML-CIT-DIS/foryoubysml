@@ -1,0 +1,56 @@
+name: Extract Zip
+
+on:
+  workflow_dispatch:
+    inputs:
+      zip_path:
+        description: "Path file zip di repo"
+        required: true
+        default: "archive.zip"
+      target_dir:
+        description: "Folder tujuan extract"
+        required: true
+        default: "extracted"
+      delete_zip:
+        description: "Hapus zip setelah extract?"
+        type: boolean
+        default: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cek isi zip dulu (anti zip slip)
+        env:
+          ZIP_PATH: ${{ inputs.zip_path }}
+        run: |
+          if unzip -Z1 "$ZIP_PATH" | grep -E '(^/|\.\./)'; then
+            echo "Zip mengandung path berbahaya, dibatalkan"
+            exit 1
+          fi
+
+      - name: Extract
+        env:
+          ZIP_PATH: ${{ inputs.zip_path }}
+          TARGET_DIR: ${{ inputs.target_dir }}
+        run: unzip -q "$ZIP_PATH" -d "$TARGET_DIR"
+
+      - name: Hapus zip (opsional)
+        if: ${{ inputs.delete_zip }}
+        env:
+          ZIP_PATH: ${{ inputs.zip_path }}
+        run: git rm "$ZIP_PATH"
+
+      - name: Commit hasil
+        env:
+          TARGET_DIR: ${{ inputs.target_dir }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$TARGET_DIR"
+          git commit -m "chore: extract zip" || echo "tidak ada perubahan"
+          git push
